@@ -1,20 +1,31 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, SafeAreaView } from 'react-native';
+import AddressInput from './components/AddressInput';
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <SafeAreaView style={styles.container}>
+      <View >
+        <StatusBar style="auto" />
+        <AddressInput
+          value="" 
+          onChangeText={(text) => {
+            console.log(text); 
+          }}
+        />
     </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    borderColor: 'red', 
   },
 });
