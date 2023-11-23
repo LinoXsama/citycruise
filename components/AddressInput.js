@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { View, TextInput, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-export default function AddressInput() {
+export default function AddressInput({navigation}) {
+
     const [textDepart, setTextDepart] = useState(''); 
     const [textArrivee, setTextArrivee] = useState(''); 
 
@@ -19,12 +20,16 @@ export default function AddressInput() {
                 onChangeText={(text) => setTextArrivee(text)}
                 placeholder={`Entrez l'adresse d'arrivée`}
                 />
-            <TouchableOpacity style={styles.button} >
-                <Text style={styles.button_text}>Envoyer les données</Text>
-            </TouchableOpacity>
+            <View style={styles.button_container}>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => navigation.navigate('Hello')}>
+                    <Text style={styles.buttonText}>Envoyer les données</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
-    }
+}
 
 const styles = StyleSheet.create({
     input_container: {
@@ -50,17 +55,11 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
 
-    button: {
+    button_container: {
         marginTop: 30,
         backgroundColor: 'dodgerblue',
         padding: 10,
-        borderRadius: 50,
+        borderRadius: 50, 
     },
-
-    button_text: {
-        color: 'white',
-        fontSize: 16,
-        textAlign: 'center',
-    }
 });
 
