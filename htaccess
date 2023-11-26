@@ -1,0 +1,29 @@
+RewriteEngine On # Activer le module Rewrite
+
+RewriteRule ^utilisateur/?$ utilisateur.php [NC,L]
+RewriteRule ^[^/]+/(\d+)$ utilisateur.php?id=$1
+
+RewriteRule ^vehicule/?$ vehicule.php [NC,L]
+RewriteRule ^[^/]+/(\d+)$ vehicule.php?id=$1
+
+RewriteRule ^course/?$ course.php [NC,L]
+RewriteRule ^[^/]+/(\d+)$ course.php?id=$1
+
+RewriteRule ^tarif/?$ tarif.php [NC,L]
+RewriteRule ^[^/]+/(\d+)$ tarif.php?id=$1
+
+RewriteRule ^zone/?$ zone.php [NC,L]
+RewriteRule ^[^/]+/(\d+)$ zone.php?id=$1
+
+RewriteRule ^chauffeur/?$ chauffeur.php [NC,L]
+RewriteRule ^[^/]+/(\d+)$ chauffeur.php?id=$1
+
+RewriteRule ^commentaire/?$ commentaire.php [NC,L]
+RewriteRule ^[^/]+/(\d+)$ commentaire.php?id=$1
+
+RewriteRule ^avoir_lieu/?$ avoir_lieu.php [NC,L]
+RewriteRule ^[^/]+/(\d+)$ avoir_lieu.php?id=$1
+
+RewriteRule ^conduire/?$ conduire.php [NC,L]
+RewriteRule ^[^/]+/(\d+)$ conduire.php?id=$1
+

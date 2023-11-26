@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, TextInput, StyleSheet, Text, TouchableOpacity, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-export default function AddressInput({navigation}) {
+export default function AddressInput() {
 
     const [textDepart, setTextDepart] = useState(''); 
-    const [textArrivee, setTextArrivee] = useState(''); 
+    const [textArrivee, setTextArrivee] = useState('');
+    
+    const navigation = useNavigation();
 
     return (
         <View style={styles.input_container}>
@@ -21,11 +24,7 @@ export default function AddressInput({navigation}) {
                 placeholder={`Entrez l'adresse d'arrivée`}
                 />
             <View style={styles.button_container}>
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => navigation.navigate('Hello')}>
-                    <Text style={styles.buttonText}>Envoyer les données</Text>
-                </TouchableOpacity>
+                <Button title="RESERVER" onPress={() => navigation.navigate('Detail')} />
             </View>
         </View>
     );
@@ -57,9 +56,6 @@ const styles = StyleSheet.create({
 
     button_container: {
         marginTop: 30,
-        backgroundColor: 'dodgerblue',
-        padding: 10,
-        borderRadius: 50, 
     },
 });
 

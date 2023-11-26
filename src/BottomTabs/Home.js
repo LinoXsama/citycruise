@@ -1,19 +1,19 @@
-import React from 'react';
-import { StatusBar } from 'expo-status-bar';
+import * as React from 'react';
+// import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, SafeAreaView } from 'react-native';
-import AddressInput from "../components/AddressInput";
+import AddressInput from "../../components/AddressInput";
 
 export default function HomeScreen() {
 
     return (
         <SafeAreaView style={styles.container}>
         <View>
-            <StatusBar style="auto" />
+            {/* <StatusBar style="auto" /> */}
             <AddressInput />
         </View>
         </SafeAreaView>
     );
-    }
+}
 
 const styles = StyleSheet.create({
     container: {
