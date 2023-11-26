@@ -1,39 +1,34 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import axios from 'axios';
+import { useRoute } from '@react-navigation/native';
+import { useFetchData } from '../../api/api';
+
 
 const Utilisateurs = () => {
-  const [userData, setUserData] = useState(null);
+    const { data: userData, error } = useFetchData('utilisateur.php');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // URL de mon serveur
-        const URL = 'http://localhost/citycruise/utilisateur.php';
-        const response = await axios.get(URL);
-        setUserData(response.data);
-      } catch (error) {
-        console.error('Erreur lors de la récupération des données :', error);
-      }
-    };
-
-    fetchData();
-  }, []);
+    // Routage des données depuis l'écran d'OnBoarding
+    const route = useRoute();
+    const { reservationData } = route.params;
 
   return (
-    <View style={styles.container}>
-      {userData && (
+        <View style={styles.container}>
+            {error && <Text>Erreur lors de la récupération des données : {error.message}</Text>}
+            {userData && (
+            <View>
+            {/* Affiche les données récupérées ici */}
+            {userData.map(user => (
+                <Text key={user.id_utilisateur}>
+                {user.nom} {user.prenom} - Email: {user.email} - Téléphone: {user.telephone}
+                </Text>
+            ))}
+            </View>
+        )}
         <View>
-          {/* Affichez les données récupérées ici */}
-          {userData.map(user => (
-            <Text key={user.id_utilisateur}>
-              {user.nom} {user.prenom} - Email: {user.email} - Téléphone: {user.telephone}
-              {/* Ajoutez les autres champs de votre table utilisateur ici */}
-            </Text>
-          ))}
+            <Text>Start Address: {reservationData.startAddress}</Text>
+            <Text>Destination: {reservationData.destination}</Text>
         </View>
-      )}
-    </View>
+        </View>
   );
 };
 
