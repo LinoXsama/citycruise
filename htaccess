@@ -27,3 +27,8 @@ RewriteRule ^[^/]+/(\d+)$ avoir_lieu.php?id=$1
 RewriteRule ^conduire/?$ conduire.php [NC,L]
 RewriteRule ^[^/]+/(\d+)$ conduire.php?id=$1
 
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE"
+    Header set Access-Control-Allow-Headers "Origin, Content-Type, X-Auth-Token"
+</IfModule>

@@ -5,14 +5,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
+const Tab = createMaterialBottomTabNavigator();
+const Stack = createStackNavigator();
 import Home from './src/BottomTabs/Home';
 import History from './src/BottomTabs/History';
 import Test from './src/BottomTabs/Test';
 
 import Detail from './src/Stack/Detail';
 
-const Tab = createMaterialBottomTabNavigator();
-const Stack = createStackNavigator();
 
 function TabNavigator() {
   return (
