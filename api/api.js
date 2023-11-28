@@ -54,6 +54,13 @@ const addUser = async (endpoint, data) => {
     }
 };
 
-export { useFetchData, postData, addUser };
+const APImanager = axios.create({
+    baseURL: process.env.URL,
+    responseType: 'json',
+    withCredentials: true,
+});
+
+
+export { useFetchData, postData, addUser, APImanager };
 
 // RECUPERATION DES DONNEES DES UTILISATEURS - FIN

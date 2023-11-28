@@ -13,7 +13,7 @@ export default function AddressInput({ start_address_placeholder, start_address_
             destination: destination_value,
         };
 
-        navigation.navigate('Detail', { reservationData });
+        navigation.navigate('Course', { reservationData });
     };
 
 

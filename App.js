@@ -1,43 +1,19 @@
 import React from 'react';
-import 'react-native-gesture-handler';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import AppStack from './navigation/AppStack';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-
-const Tab = createMaterialBottomTabNavigator();
-const Stack = createStackNavigator();
-import Home from './src/BottomTabs/Home';
-import History from './src/BottomTabs/History';
-import Test from './src/BottomTabs/Test';
-
-import Detail from './src/Stack/Detail';
-
-
-function TabNavigator() {
+const App = () => {
   return (
-    <Tab.Navigator >
-      <Tab.Screen name='OnBoarding' component={StackNavigator} />
-      <Tab.Screen name='Historique' component={History} />
-      <Tab.Screen name='Test' component={Test} />
-    </Tab.Navigator>
+    <SafeAreaView style={styles.container}>
+      <AppStack />
+    </SafeAreaView>
   );
 };
 
-function StackNavigator() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name='Accueil' component={Home} />
-      <Stack.Screen name='Detail' component={Detail} />
-    </Stack.Navigator>
-  );
-};
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <TabNavigator />
-    </NavigationContainer>
-  )
-}
-
+export default App;
