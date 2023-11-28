@@ -1,10 +1,12 @@
+import React, { useContext } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import * as React from 'react'
+import { AuthContext } from '../../context/AuthContext';
 
 const History = () => {
+    const {test} = useContext(AuthContext);
     return (
         <View style={styles.container}>
-            <Text>Historique</Text>
+            <Text>{test}</Text>
         </View>
     )
 }

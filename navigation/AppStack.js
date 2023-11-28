@@ -14,8 +14,7 @@ import History from '../src/BottomTabs/History';
 import Course from '../src/Stack/Course';
 
 import selectAccount from '../src/Stack/selectAccount';
-import createAccount from '../src/Stack/createAccount';
-import login from '../src/Stack/login';
+
 import paiement from '../src/Stack/paiement';
 import waiting from '../src/Stack/waiting';
 import rateAndComment from '../src/Stack/rateAndComment';
@@ -35,8 +34,6 @@ function StackNavigator() {
         <Stack.Screen name='Accueil' component={Home} />
         <Stack.Screen name='Course' component={Course} />
         <Stack.Screen name='Comptes' component={selectAccount} />
-        <Stack.Screen name='Créer un compte' component={createAccount} />
-        <Stack.Screen name='Se connecter' component={login} />
         <Stack.Screen name='Paiement' component={paiement} />
         <Stack.Screen name='Attente' component={waiting} />
         <Stack.Screen name='Votre avis compte' component={rateAndComment} />

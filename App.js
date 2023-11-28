@@ -1,11 +1,20 @@
-import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView, StyleSheet, Button } from 'react-native';
 import AppStack from './navigation/AppStack';
+import AuthStack from './navigation/AuthStack';
 
 const App = () => {
+  const [showAuthStack, setShowAuthStack] = useState(false);
+
+  const handleToggleAuthStack = () => {
+    setShowAuthStack(!showAuthStack);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
-      <AppStack />
+      {showAuthStack ? <AuthStack /> : <AppStack />}
+      {!showAuthStack && <Button title="SE CONNECTER" onPress={handleToggleAuthStack} />}
+      {showAuthStack && <Button title="RETOUR" onPress={() => setShowAuthStack(false)} />}
     </SafeAreaView>
   );
 };
@@ -17,3 +26,4 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
