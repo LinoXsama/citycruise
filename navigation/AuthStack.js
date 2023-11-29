@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
 import { AuthProvider } from '../context/AuthContext';
+
 import login from '../src/Stack/login';
 import createAccount from '../src/Stack/createAccount';
 
@@ -22,7 +22,7 @@ function AuthStackNavigator() {
 export default function AuthStack() {
     return (
         <NavigationContainer>
-        <AuthStackNavigator />
+            <AuthStackNavigator />
         </NavigationContainer>
     );
 }

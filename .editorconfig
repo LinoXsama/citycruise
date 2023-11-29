@@ -1,0 +1,3 @@
+# Désactiver temporairement les erreurs
+[*.{ts,tsx,js,jsx}]
+editor.suggest.showErrors = false
