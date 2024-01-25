@@ -1,49 +1,29 @@
 import React, {useState} from 'react';
-import { View, Text, TextInput, TouchableOpacity, Button } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import COLORS from '../../constants/colors';
-import { Ionicons } from "@expo/vector-icons"
+import { Ionicons } from "@expo/vector-icons";
 
-const History = () => {
+export default function createAccount() {
     const [isPasswordShown, setIsPasswordShown] = useState(false);
+    
     return (
-        <SafeAreaView style={{flex: 1, backgroundColor: COLORS.white}}>
-            <View style={{flex: 1, marginHorizontal: 22}}>
-                <View style={{ marginHorizontal: 22 }}>
-                    <Text style={{
-                        fontSize: 22,
-                        fontWeight: 'bold',
-                        marginVertical: 12,
-                        color: COLORS.black
-                        }}>
+        <SafeAreaView style={styles.safearea}>
+            <View style={styles.mainview}>
+                <View style={styles.titleview}>
+                    <Text style={styles.title}>
                         Créer un compte
                     </Text>
-                    <Text style={{
-                        fontSize: 22,
-                        color: COLORS.black
-                    }}>
+                    <Text style={styles.subtitle}>
                     Rejoignez la communauté CityCruise !
                     </Text>
                 </View>
 
-                <View style={{marginBottom: 12}}>
-                    <Text style={{
-                        fontSize: 16,
-                        fontWeight: 400,
-                        marginVertical: 8
-                    }}>Nom
+                <View style={styles.nameview}>
+                    <Text style={styles.nametitle}>Nom
                     </Text>
 
-                    <View style={{
-                        width: "100%",
-                        height:48,
-                        borderBlockColor: COLORS.black,
-                        borderWidth: 1,
-                        borderRadius: 8,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        paddingLeft: 22
-                    }}>
+                    <View style={styles.nametextinputview}>
                         <TextInput 
                             placeholder='Entrez votre nom'
                             placeholderTextColor={COLORS.black}
@@ -63,16 +43,7 @@ const History = () => {
                     }}>Prénom
                     </Text>
 
-                    <View style={{
-                        width: "100%",
-                        height:48,
-                        borderBlockColor: COLORS.black,
-                        borderWidth: 1,
-                        borderRadius: 8,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        paddingLeft: 22
-                    }}>
+                    <View style={styles.A}>
                         <TextInput 
                             placeholder='Entrez votre prénom'
                             placeholderTextColor={COLORS.black}
@@ -85,23 +56,10 @@ const History = () => {
                 </View>
 
                 <View style={{marginBottom: 12}}>
-                    <Text style={{
-                        fontSize: 16,
-                        fontWeight: 400,
-                        marginVertical: 8
-                    }}>Numéro de téléphone
+                    <Text style={styles.B}>Numéro de téléphone
                     </Text>
 
-                    <View style={{
-                        flexDirection: 'row',
-                        width: "100%",
-                        height: 48,
-                        borderColor: COLORS.black,
-                        borderWidth: 1,
-                        borderRadius: 8,
-                        alignItems: "center",
-                        paddingLeft: 22
-                    }}>
+                    <View style={styles.C}>
                         <TextInput 
                             placeholder='+33'
                             placeholderTextColor={COLORS.black}
@@ -181,7 +139,7 @@ const History = () => {
                         marginTop: 18,
                         marginBottom: 4,
                     }}
-                >  
+                >
                     <Text style={{ color: 'white', textAlign: 'center', fontSize: 16 }}>
                         CRÉER LE COMPTE
                     </Text>
@@ -192,4 +150,67 @@ const History = () => {
     )
 }
 
-export default History;
+const styles = StyleSheet.create({
+    safearea: {
+        flex: 1, 
+        backgroundColor: COLORS.white
+    },
+    mainview: {
+        flex: 1, 
+        marginHorizontal: 22
+    },
+    titleview: { 
+        marginHorizontal: 22 
+    },
+    title: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        marginVertical: 12,
+        color: COLORS.black
+        },
+    subtitle: {
+        fontSize: 22,
+        color: COLORS.black
+    },
+    nameview: {marginBottom: 12},
+    nametitle : {
+        fontSize: 16,
+        fontWeight: 400,
+        marginVertical: 8
+    },
+    nametextinputview : {
+        width: "100%",
+        height:48,
+        borderBlockColor: COLORS.black,
+        borderWidth: 1,
+        borderRadius: 8,
+        alignItems: "center",
+        justifyContent: "center",
+        paddingLeft: 22
+    },
+    A:{
+        width: "100%",
+        height:48,
+        borderBlockColor: COLORS.black,
+        borderWidth: 1,
+        borderRadius: 8,
+        alignItems: "center",
+        justifyContent: "center",
+        paddingLeft: 22
+    },
+    B: {
+        fontSize: 16,
+        fontWeight: 400,
+        marginVertical: 8
+    },
+    C: {
+        flexDirection: 'row',
+        width: "100%",
+        height: 48,
+        borderColor: COLORS.black,
+        borderWidth: 1,
+        borderRadius: 8,
+        alignItems: "center",
+        paddingLeft: 22
+    },
+});

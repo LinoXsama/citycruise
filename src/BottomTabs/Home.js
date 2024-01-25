@@ -1,25 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, SafeAreaView } from 'react-native';
 import AddressInput from "../../components/AddressInput";
 
 export default function HomeScreen() {
-
-    const [start_address, setStartAddress] = useState('');
-    const [destination, setDestination] = useState('');
-
     return (
         <SafeAreaView style={styles.container}>
         <View >
             {/* <StatusBar style="auto" /> */}
-            <AddressInput 
-                start_address_placeholder="Adresse de départ" 
-                start_address_value={start_address} 
-                setStartAddressValue={setStartAddress} 
-    
-                destination_placeholder="Adresse de destination" 
-                destination_value={destination} 
-                setDestinationValue={setDestination}/>
+            <AddressInput />
         </View>
         </SafeAreaView>
     );
