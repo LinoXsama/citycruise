@@ -1,0 +1,20 @@
+[
+    { "id": 1, "full_name": "Aéroport Lyon Saint-Exupery", "distance": "25 km" },
+    { "id": 2, "full_name": "Vieux Lyon", "distance": "2 km" },
+    { "id": 3, "full_name": "Basilique Notre-Dame de Fourvière", "distance": "4 km" },
+    { "id": 4, "full_name": "Place Bellecour", "distance": "3 km" },
+    { "id": 5, "full_name": "Parc de la Tête d'Or", "distance": "5 km" },
+    { "id": 6, "full_name": "Musée des Beaux-Arts de Lyon", "distance": "1.5 km" },
+    { "id": 7, "full_name": "Traboules de Lyon", "distance": "2.5 km" },
+    { "id": 8, "full_name": "Opéra National de Lyon", "distance": "4.5 km" },
+    { "id": 9, "full_name": "Les Halles de Lyon - Paul Bocuse", "distance": "3.8 km" },
+    { "id": 10, "full_name": "La Croix-Rousse", "distance": "2.7 km" },
+    { "id": 11, "full_name": "Confluence", "distance": "6 km" },
+    { "id": 12, "full_name": "Place des Terreaux", "distance": "3.2 km" },
+    { "id": 13, "full_name": "Théâtre des Célestins", "distance": "4.3 km" },
+    { "id": 14, "full_name": "Croisière sur la Saône", "distance": "7 km" },
+    { "id": 15, "full_name": "Marché Saint-Antoine Célestins", "distance": "2.3 km" },
+    { "id": 16, "full_name": "Parc des Hauteurs", "distance": "5.5 km" },
+    { "id": 17, "full_name": "Les Berges du Rhône", "distance": "4.8 km" },
+    { "id": 18, "full_name": "Institut Lumière", "distance": "3.9 km" }
+  ]
