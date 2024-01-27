@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { 
   View, 
-  TextInput, 
-  Button, 
-  TouchableOpacity, 
   ScrollView, 
+  TouchableOpacity, 
   TouchableWithoutFeedback,
-  Text
+  Text,
+  TextInput, 
+  Button,
+
 } from 'react-native';
 import styles  from './AddressInputStyles';
 import { useNavigation } from '@react-navigation/native';
@@ -29,7 +30,7 @@ export default function AddressInput() {
       destination: destinationAddress,
     };
 
-    navigation.navigate('Validation', { reservationData });
+    navigation.navigate('validation', { reservationData });
   };
 
   const onChangeStartAddress = (text) => {
@@ -45,20 +46,16 @@ export default function AddressInput() {
 
   const onChangeDestination = (text) => {
     setDestinationAddress(text);
-
     if(text === '') {
       setSuggestions2([]);
     } else {
       filterData(text, setSuggestions2);
     }
-
   };
 
   const filterData = (searchTerm, setSuggestions) => {
-
     const filtered = data.filter(item => item.full_name.toLowerCase().startsWith(searchTerm.toLowerCase()));
     setSuggestions(filtered);
-
   }
 
   const onSuggestionPress = (item, setValue, setSuggestions) => {
@@ -81,45 +78,45 @@ export default function AddressInput() {
 
   return(
     <View style={{ flex: 1, backgroundColor: '#007bff' }}>
-      <TouchableWithoutFeedback onPress={dismissSuggestions}>
-        <View style={styles.container}>
-          <View style={styles.formContainer}>
+    <TouchableWithoutFeedback onPress={dismissSuggestions}>
+      <View style={styles.container}>
+        <View style={styles.formContainer}>
 
-            <TextInput
-              placeholder='Adresse de départ'
-              style={styles.input}
-              value={startAddress}
-              onChangeText={onChangeStartAddress}
-            />
-            {suggestions1.length > 0 && (
-              <View style={[styles.suggestionsListContainer, styles.elevation]}>
-                <ScrollView style={styles.suggestionsList}>
-                  {renderSuggestions(suggestions1, setStartAddress, setSuggestions1)}
-                </ScrollView>
-              </View>
-            )}
-
-            <TextInput
-              placeholder='Adresse de destination'
-              style={styles.input}
-              value={destinationAddress}
-              onChangeText={onChangeDestination}
-            />
-            {suggestions2.length > 0 && (
-              <View style={[styles.suggestionsListContainer, styles.suggestionsListContainer2, styles.elevation]}>
-                <ScrollView style={styles.suggestionsList}>
-                  {renderSuggestions(suggestions2, setDestinationAddress, setSuggestions2)}
-                </ScrollView>
-              </View>
-            )}
-
-            <View style={styles.buttonContainer}>
-              <Button title="Réserver" onPress={handleReservePress} />
+          <TextInput
+            placeholder='Adresse de départ'
+                    style={styles.input}
+                    value={startAddress}
+            onChangeText={onChangeStartAddress}
+          />
+          {suggestions1.length > 0 && (
+            <View style={[styles.suggestionsListContainer, styles.elevation]}>
+              <ScrollView style={styles.suggestionsList}>
+                {renderSuggestions(suggestions1, setStartAddress, setSuggestions1)}
+                    </ScrollView>
             </View>
-          
-          </View>
+          )}
+
+                <TextInput
+                    placeholder='Adresse de destination'
+                    style={styles.input}
+                    value={destinationAddress}
+                    onChangeText={onChangeDestination}
+                />
+                {suggestions2.length > 0 && (
+                  <View style={[styles.suggestionsListContainer, styles.suggestionsListContainer2, styles.elevation]}>
+                    <ScrollView style={styles.suggestionsList}>
+                      {renderSuggestions(suggestions2, setDestinationAddress, setSuggestions2)}
+                    </ScrollView>
+                  </View>
+                )}
+
+                <View style={styles.buttonContainer}>
+                  <Button title="Réserver" onPress={handleReservePress} />
+                </View>
+                
         </View>
-      </TouchableWithoutFeedback>
-    </View>
-  );
+      </View>
+    </TouchableWithoutFeedback>
+</View>
+  )
 }

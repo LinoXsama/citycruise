@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, View, SafeAreaView } from 'react-native';
 import AddressInput from "../../components/AddressInput";
 
-export default function HomeScreen() {
+export default function Home() {
     return (
         <SafeAreaView style={styles.container}>
         <View >
@@ -23,9 +23,4 @@ const styles = StyleSheet.create({
         borderColor: 'red',
         backgroundColor: '#F9FBFC' 
     },
-    root : {
-        alignItems : 'center',
-        padding: 20,
-        backgroundColor: '#F9FBFC'
-    }
 });

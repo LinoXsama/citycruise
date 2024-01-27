@@ -3,10 +3,10 @@ import axios from 'axios';
 
 const BASE_URL = process.env.URL;
 
-// RECUPERATION DES DONNEES DES UTILISATEURS - START
-const fetchData = async (endpoint) => {
+// RECUPERATION DES DONNEES DES ADRESSES
+const fetchData = async () => {
     try {
-        const response = await axios.get(`${BASE_URL}${endpoint}`);
+        const response = await axios.get(`${BASE_URL}`);
         return response.data;
     } catch (error) {
         console.error('Erreur lors de la récupération des données :', error);
@@ -14,14 +14,14 @@ const fetchData = async (endpoint) => {
     }
 };
 
-const useFetchData = (endpoint) => {
+const useFetchData = () => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchDataFromApi = async () => {
         try {
-            const responseData = await fetchData(endpoint);
+            const responseData = await fetchData();
             setData(responseData);
         } catch (error) {
             setError(error);
@@ -29,14 +29,14 @@ const useFetchData = (endpoint) => {
         };
 
         fetchDataFromApi();
-    }, [endpoint]);
+    }, [data]);
 
     return { data, error };
 };
 
-const postData = async (endpoint, data) => {
+const postData = async (data) => {
     try {
-        const response = await axios.post(`${BASE_URL}${endpoint}`, data);
+        const response = await axios.post(`${BASE_URL}`, data);
         return response.data;
     } catch (error) {
         console.error('Erreur lors de l\'envoi des données :', error);
@@ -44,9 +44,9 @@ const postData = async (endpoint, data) => {
     }
 };
 
-const addUser = async (endpoint, data) => {
+const addUser = async (data) => {
     try {
-        const response = await axios.post(`${BASE_URL}${endpoint}`, data);
+        const response = await axios.post(`${BASE_URL}`, data);
         return response.data;
     } catch (error) {
         console.error("Erreur lors de l'ajout des données utilisateur :", error);

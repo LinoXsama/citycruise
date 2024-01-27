@@ -1,216 +1,169 @@
-import React, {useState} from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import axios from 'axios'; // Importez le module axios
 import COLORS from '../../constants/colors';
 import { Ionicons } from "@expo/vector-icons";
 
-export default function createAccount() {
+const BASE_URL = process.env.URL;
+
+export default function Login() {
     const [isPasswordShown, setIsPasswordShown] = useState(false);
-    
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const getEmail = (text) => {
+        setEmail(text);
+    }
+
+    const getPassword = (text) => {
+        setPassword(text);
+    }
+
+    const handleLogin = async () => {
+        try {
+            const response = await axios.get(`${BASE_URL}utilisateur.php`, {
+                params: {
+                    email,
+                    password,
+                },
+            });
+            // Traitement des données ou redirection après la connexion
+        } catch (error) {
+            console.error('Erreur lors de la connexion :', error);
+            Alert.alert('Erreur lors de la connexion');
+        }
+    }
+
     return (
-        <SafeAreaView style={styles.safearea}>
-            <View style={styles.mainview}>
-                <View style={styles.titleview}>
+        <SafeAreaView style={styles.safeArea}>
+            <View style={styles.mainView}>
+                <View style={styles.titleView}>
                     <Text style={styles.title}>
-                        Créer un compte
+                        Connexion
                     </Text>
                     <Text style={styles.subtitle}>
-                    Rejoignez la communauté CityCruise !
+                        Rejoignez la communauté CityCruise !
                     </Text>
                 </View>
 
-                <View style={styles.nameview}>
-                    <Text style={styles.nametitle}>Nom
-                    </Text>
-
-                    <View style={styles.nametextinputview}>
-                        <TextInput 
-                            placeholder='Entrez votre nom'
+                <View style={styles.inputContainer}>
+                    <Text style={styles.inputTitle}>Adresse e-mail</Text>
+                    <View style={styles.inputView}>
+                        <TextInput
+                            placeholder='Entrez votre adresse e-mail'
                             placeholderTextColor={COLORS.black}
-                            keyboardType='email-adress'
-                            style={{
-                                width: "100%"
-                            }}
+                            keyboardType='email-address'
+                            style={styles.input}
+                            onChangeText={getEmail}
                         />
                     </View>
                 </View>
 
-                <View style={{marginBottom: 12}}>
-                    <Text style={{
-                        fontSize: 16,
-                        fontWeight: 400,
-                        marginVertical: 8
-                    }}>Prénom
-                    </Text>
-
-                    <View style={styles.A}>
-                        <TextInput 
-                            placeholder='Entrez votre prénom'
-                            placeholderTextColor={COLORS.black}
-                            keyboardType='email-adress'
-                            style={{
-                                width: "100%"
-                            }}
-                        />
-                    </View>
-                </View>
-
-                <View style={{marginBottom: 12}}>
-                    <Text style={styles.B}>Numéro de téléphone
-                    </Text>
-
-                    <View style={styles.C}>
-                        <TextInput 
-                            placeholder='+33'
-                            placeholderTextColor={COLORS.black}
-                            keyboardType='numeric'
-                            style={{
-                                width: "12%",
-                                borderRightWidth: 1,
-                                borderRightColor: COLORS.grey,
-                                height: "100%"
-                            }}
-                        />
-
-                        <TextInput 
-                            placeholder='Entrez votre numéro'
-                            placeholderTextColor={COLORS.black}
-                            keyboardType='numeric'
-                            style={{
-                                flex: 1,
-                                marginLeft: 8
-                            }}
-                        />
-                    </View>
-                </View>
-
-                <View style={{marginBottom: 12}}>
-                    <Text style={{
-                        fontSize: 16,
-                        fontWeight: 400,
-                        marginVertical: 8
-                    }}>Mot de passe
-                    </Text>
-
-                    <View style={{
-                        width: "100%",
-                        height:48,
-                        borderBlockColor: COLORS.black,
-                        borderWidth: 1,
-                        borderRadius: 8,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        paddingLeft: 22
-                    }}>
-                        <TextInput 
+                <View style={styles.inputContainer}>
+                    <Text style={styles.inputTitle}>Mot de passe</Text>
+                    <View style={styles.passwordInputView}>
+                        <TextInput
                             placeholder='Entrez votre mot de passe'
                             placeholderTextColor={COLORS.black}
-                            secureTextEntry={isPasswordShown}
-                            style={{
-                                width: "100%"
-                            }}
+                            secureTextEntry={!isPasswordShown}
+                            style={styles.input}
+                            onChangeText={getPassword}
                         />
-
                         <TouchableOpacity
                             onPress={() => setIsPasswordShown(!isPasswordShown)}
-                            style={{
-                                position: "absolute",
-                                right: 12,
-                            }}
+                            style={styles.passwordVisibilityIcon}
                         >
-                            {
-                                isPasswordShown == true ? (
-                                    <Ionicons name="eye-off" size={24} color={COLORS.black} />
-                                ) : (
-                                    <Ionicons name="eye" size={24} color={COLORS.black} />
-                                )
-                            }
-                            
+                            <Ionicons name={isPasswordShown ? "eye-off" : "eye"} size={24} color={COLORS.black} />
                         </TouchableOpacity>
                     </View>
                 </View>
 
                 <TouchableOpacity
-                    style={{
-                        backgroundColor: COLORS.blue,
-                        borderRadius: 10, 
-                        paddingVertical: 12,
-                        paddingHorizontal: 24,
-                        marginTop: 18,
-                        marginBottom: 4,
-                    }}
+                    onPress={handleLogin}
+                    style={styles.createAccountButton}
                 >
-                    <Text style={{ color: 'white', textAlign: 'center', fontSize: 16 }}>
-                        CRÉER LE COMPTE
+                    <Text style={styles.buttonText}>
+                        SE CONNECTER
                     </Text>
                 </TouchableOpacity>
-                
+
             </View>
         </SafeAreaView>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
-    safearea: {
-        flex: 1, 
-        backgroundColor: COLORS.white
+    safeArea: {
+        flex: 1,
+        backgroundColor: COLORS.white,
     },
-    mainview: {
-        flex: 1, 
-        marginHorizontal: 22
+    mainView: {
+        flex: 1,
+        marginHorizontal: 22,
     },
-    titleview: { 
-        marginHorizontal: 22 
+    titleView: {
+        marginHorizontal: 22,
     },
     title: {
         fontSize: 22,
         fontWeight: 'bold',
         marginVertical: 12,
-        color: COLORS.black
-        },
+        color: COLORS.black,
+    },
     subtitle: {
         fontSize: 22,
-        color: COLORS.black
+        color: COLORS.black,
     },
-    nameview: {marginBottom: 12},
-    nametitle : {
+    inputContainer: {
+        marginBottom: 12,
+    },
+    inputTitle: {
         fontSize: 16,
-        fontWeight: 400,
-        marginVertical: 8
+        fontWeight: '400',
+        marginVertical: 8,
     },
-    nametextinputview : {
-        width: "100%",
-        height:48,
-        borderBlockColor: COLORS.black,
-        borderWidth: 1,
-        borderRadius: 8,
-        alignItems: "center",
-        justifyContent: "center",
-        paddingLeft: 22
-    },
-    A:{
-        width: "100%",
-        height:48,
-        borderBlockColor: COLORS.black,
-        borderWidth: 1,
-        borderRadius: 8,
-        alignItems: "center",
-        justifyContent: "center",
-        paddingLeft: 22
-    },
-    B: {
-        fontSize: 16,
-        fontWeight: 400,
-        marginVertical: 8
-    },
-    C: {
-        flexDirection: 'row',
+    inputView: {
         width: "100%",
         height: 48,
         borderColor: COLORS.black,
         borderWidth: 1,
         borderRadius: 8,
         alignItems: "center",
-        paddingLeft: 22
+        justifyContent: "center",
+        paddingLeft: 22,
+    },
+    passwordInputView: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        width: '100%',
+        height: 48,
+        borderColor: COLORS.black,
+        borderWidth: 1,
+        borderRadius: 8,
+        paddingLeft: 22,
+        paddingRight: 12,
+    },
+    input: {
+        flex: 1,
+        width: "100%",
+    },
+    passwordVisibilityIcon: {
+        position: "absolute",
+        right: 12,
+    },
+    createAccountButton: {
+        backgroundColor: COLORS.blue,
+        borderRadius: 10,
+        paddingVertical: 12,
+        paddingHorizontal: 24,
+        marginTop: 18,
+        marginBottom: 4,
+    },
+    buttonText: {
+        color: 'white',
+        textAlign: 'center',
+        fontSize: 16,
     },
 });
